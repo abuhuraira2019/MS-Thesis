@@ -32,8 +32,8 @@ class GeminiEmbeddingFunction(EmbeddingFunction):
 
 # --- 3. UI Configuration ---
 st.set_page_config(page_title="PsyScreen-RAG", page_icon="🧠", layout="wide")
-st.title("🧠 PsyScreen-RAG Clinical Assistant")
-st.markdown("MS Thesis Project | Powered by Gemini 3 Flash Preview")
+st.title("PsyScreen-RAG Clinical Assistant")
+st.markdown("MS Thesis Project | Developed by Abu Huraira")
 
 # --- 4. Initialize Client & RAG Database ---
 client = genai.Client(api_key=api_key)
@@ -114,7 +114,7 @@ def get_crisis_response():
     """
 
 # --- 8. Sidebar & Report Generation ---
-st.sidebar.header("Session Management")
+st.sidebar.header("Patient Reporting")
 if st.sidebar.button("📄 Generate Final Clinical Report"):
     with st.spinner("Compiling structured report..."):
         report_prompt = "The screening is complete. Generate a final clinical report including Tests Administered, Calculated Scores, and CBT Recommendations based strictly on the RAG data. Use Markdown tables."
@@ -163,3 +163,4 @@ if user_input:
             st.markdown(response.text)
 
             st.session_state.messages.append({"role": "assistant", "content": response.text})
+
